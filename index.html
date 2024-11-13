@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="images/logitoo.png" type="image/x-icon">
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odontología - Venta de Equipos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .carousel-container {
+            width: 50%;
+            overflow: hidden;
+            position: relative;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 300%;
+        }
+
+        .carousel-slide > div {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .producto .img-container img {
+            height: 100px;
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .producto {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .producto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logitoo.png" height="40" alt="Logo Odontología" class="me-2">
+                Odontología
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="equipos.html">Venta de Equipos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobrenosotros.html">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="informacion.html">Consejos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="titulos text-center my-5">
+        <h1 class="text-primary">Tienda Odontológica</h1>
+        <h2>Productos Destacados</h2>
+    </div>
+
+    <section class="carousel-container">
+        <div class="carousel-slide">
+            <div class="card producto">
+                <div class="img-container">
+                    <img src="images/guantes.jpeg" alt="Guantes de Látex">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Guantes de Látex</h5>
+                    <p>Guantes de látex rosados, cómodos y resistentes.</p>
+                    <b>$32.500</b>
+                </div>
+            </div>
+
+            <div class="card producto">
+                <div class="img-container">
+                    <img src="images/articuladortipodonto.jpeg" alt="Articulador Dental">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Articulador Dental</h5>
+                    <p>Articulador dental profesional para máxima precisión.</p>
+                    <b>$567.500</b>
+                </div>
+            </div>
+
+            <div class="card producto">
+                <div class="img-container">
+                    <img src="images/3fresasdentales.jpeg" alt="Fresas Dentales">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Fresas Dentales</h5>
+                    <p>Fresas dentales de alta calidad para precisión en tratamientos.</p>
+                    <b>$300.000</b>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <button onclick="previousSlide()">❮</button>
+            <button onclick="nextSlide()">❯</button>
+        </div>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.carousel-slide');
+            currentSlide = (index + slides.children.length) % slides.children.length;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+    </script>
+
+</body>
+</html>
